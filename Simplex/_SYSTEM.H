@@ -1,11 +1,11 @@
 /*---------------------------------------------------------+
 |                                                          |
-|  Пpогpамма pешения задачи Лин-ого Пpогpаммиpования       |
-|     Симплексным методом.                                 |
+|  РџpРѕРіpР°РјРјР° pРµС€РµРЅРёСЏ Р·Р°РґР°С‡Рё Р›РёРЅ-РѕРіРѕ РџpРѕРіpР°РјРјРёpРѕРІР°РЅРёСЏ       |
+|     РЎРёРјРїР»РµРєСЃРЅС‹Рј РјРµС‚РѕРґРѕРј.                                 |
 |                                                          |
 |                                                          |
-|  /см. Пpикладнyю матем./                                 |
-|       Автоp -- Я .            December 1996              |
+|  /СЃРј. РџpРёРєР»Р°РґРЅyСЋ РјР°С‚РµРј./                                 |
+|       РђРІС‚Рѕp -- РЇ .            December 1996              |
 |                                                          |
 |                                                          |
 |                                                          |
@@ -17,7 +17,7 @@
 
 #include <iostream.h>
 
-/*----------    Максимальная pазмеpность матpицы     ----------*/ 
+/*----------    РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ pР°Р·РјРµpРЅРѕСЃС‚СЊ РјР°С‚pРёС†С‹     ----------*/ 
 #define MAX1  50
 #define MAX2  30
 
@@ -25,13 +25,13 @@
 class Simplex
 {
     public:
-        float goal;               // значение целевой функции
+        float goal;               // Р·РЅР°С‡РµРЅРёРµ С†РµР»РµРІРѕР№ С„СѓРЅРєС†РёРё
         Simplex(  int nVariables, int nEquations);
         
         void get(istream &is);
         void put(ostream &os);
         int Solve();             // number of iterations or 0
-        float calculate_goal();  // расчет текущ. знач. целевой f.
+        float calculate_goal();  // СЂР°СЃС‡РµС‚ С‚РµРєСѓС‰. Р·РЅР°С‡. С†РµР»РµРІРѕР№ f.
 //        int Next();            // next iteration
         friend ostream& operator <<(ostream& os, Simplex &s);
         friend istream& operator >>(istream& is, Simplex &s);
@@ -40,26 +40,26 @@ class Simplex
         virtual int Error(char *msg, int err_code); // 0 - if fatal
         void getz(istream &is);
         void putz(ostream &os);
-        void print_price(ostream &os); // вывод оценок
+        void print_price(ostream &os); // РІС‹РІРѕРґ РѕС†РµРЅРѕРє
         void Calculate( int record );
         
 //-------------------------------------------------------------------
    public:
       int nEqs, nVars, nTotalVars;  // TotalVars=nEqs+nVars
-      float matr   [MAX1][MAX2];    // симплекс матрица
-      float z      [MAX2];          // коэф-ты целевой функции[nVars]
-      float prices [MAX2];          // оценки [nVars]
-      float alfa   [MAX1];          // вспомог. массив для поиска строки
-      float beta   [MAX1];          // ------------ для рассчета  [nEqs]
+      float matr   [MAX1][MAX2];    // СЃРёРјРїР»РµРєСЃ РјР°С‚СЂРёС†Р°
+      float z      [MAX2];          // РєРѕСЌС„-С‚С‹ С†РµР»РµРІРѕР№ С„СѓРЅРєС†РёРё[nVars]
+      float prices [MAX2];          // РѕС†РµРЅРєРё [nVars]
+      float alfa   [MAX1];          // РІСЃРїРѕРјРѕРі. РјР°СЃСЃРёРІ РґР»СЏ РїРѕРёСЃРєР° СЃС‚СЂРѕРєРё
+      float beta   [MAX1];          // ------------ РґР»СЏ СЂР°СЃСЃС‡РµС‚Р°  [nEqs]
 //-------------------------------------------------------------------
    private:
       int error;
-      void find_basis();         // поиск базисных переменных
-      void find_bkoef();         // поиск базисных коэффициентов
-      void calculate_prices();   // расчет оценок
-      int find_field();          // поиск столбца из оценок
+      void find_basis();         // РїРѕРёСЃРє Р±Р°Р·РёСЃРЅС‹С… РїРµСЂРµРјРµРЅРЅС‹С…
+      void find_bkoef();         // РїРѕРёСЃРє Р±Р°Р·РёСЃРЅС‹С… РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ
+      void calculate_prices();   // СЂР°СЃС‡РµС‚ РѕС†РµРЅРѕРє
+      int find_field();          // РїРѕРёСЃРє СЃС‚РѕР»Р±С†Р° РёР· РѕС†РµРЅРѕРє
       int test_alfa( int _field );   //  !!!!!!!!!!!
-              // расчет вспомог. массива 
+              // СЂР°СЃС‡РµС‚ РІСЃРїРѕРјРѕРі. РјР°СЃСЃРёРІР° 
       void calculate_alfa( int _field ); 
       int find_record();
       void   calculate_beta( int _field, int _record );
