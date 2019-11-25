@@ -1,8 +1,8 @@
 /*  
     
-    ä´†·· §´Ô p•Ë•≠®Ô ß†§†Á® p†·Øp•§•´•≠≠®Ô p•·„p·Æ¢ 
+    –ö–ª–∞—Å—Å –¥–ª—è p–µ—à–µ–Ω–∏—è –∑–∞–¥–∞—á–∏ p–∞—Å–øp–µ–¥–µ–ª–µ–Ω–Ω–∏—è p–µ—Å—Ép—Å–æ–≤ 
     
-    ·¨. í•‚p†§Ï ØÆ "èp®™´. å†‚•¨-™•".
+    —Å–º. –¢–µ—Çp–∞–¥—å –ø–æ "–üp–∏–∫–ª. –ú–∞—Ç–µ–º-–∫–µ". 1995
 
 */
 
@@ -31,17 +31,17 @@ class ResourceTask
         friend istream & operator>>(istream &os, ResourceTask &rt);
     protected:
         int nRes, nFirms;
-        t_float money[MAX_RES];             // p•·„p·Î
-        t_float data[MAX_FIRMS][MAX_RES];   // ¢ÂÆ§≠Î• §†≠≠Î•
+        t_float money[MAX_RES];             // p–µ—Å—Ép—Å—ã
+        t_float data[MAX_FIRMS][MAX_RES];   // –≤—Ö–æ–¥–Ω—ã–µ –¥–∞–Ω–Ω—ã–µ
         struct Info
         { 
-            short imoney;                   // ®≠§•™· p•·-Æ¢ ¢Æß¨-ÎÂ
-            t_float income;                 // Æ‚§†Á† --- " --- 
-            unsigned short index;           // ®≠§. ÆØ‚®¨. ¢´Æ¶. ¢
-        };                                  // 1-„Ó ‰®p¨„
+            short imoney;                   // –∏–Ω–¥–µ–∫—Å p–µ—Å-–æ–≤ –≤–æ–∑–º-—ã—Ö
+            t_float income;                 // –æ—Ç–¥–∞—á–∞ --- " --- 
+            unsigned short index;           // –∏–Ω–¥. –æ–ø—Ç–∏–º. –≤–ª–æ–∂. –≤
+        };                                  // 1-—É—é —Ñ–∏p–º—É
         unsigned short result[MAX_FIRMS];
-        Info tmp[MAX_FIRMS-1][MAX_RES];     // ‚†°´. §´Ô ÆØp•§•´•≠®Ô
-                                            // p•ß„´Ï‚†‚Æ¢
+        Info tmp[MAX_FIRMS-1][MAX_RES];     // —Ç–∞–±–ª. –¥–ª—è –æ–øp–µ–¥–µ–ª–µ–Ω–∏—è
+                                            // p–µ–∑—É–ª—å—Ç–∞—Ç–æ–≤
 };
 //-----------------------------------------------------------------
 t_bool ResourceTask::Solve()
@@ -70,20 +70,20 @@ t_bool ResourceTask::Solve()
             tmp[k][i].income=max;
             tmp[k][i].index=index;
         }
-    // éØp•§•´•≠®• ÆØ‚®¨†´Ï≠Æ£Æ ¢†p®†≠‚†
-    t_float income=tmp[nFirms-1][0].income;    //·Ø•Ê. Æ°p†°Æ‚™†
-    for( i=1; i<nRes; i++ )                    // ØÆ·´•§≠•© ‚†°´®ÊÎ
+    // –û–øp–µ–¥–µ–ª–µ–Ω–∏–µ –æ–ø—Ç–∏–º–∞–ª—å–Ω–æ–≥–æ –≤–∞p–∏–∞–Ω—Ç–∞
+    t_float income=tmp[nFirms-1][0].income;    //—Å–ø–µ—Ü. –æ–±p–∞–±–æ—Ç–∫–∞
+    for( i=1; i<nRes; i++ )                    // –ø–æ—Å–ª–µ–¥–Ω–µ–π —Ç–∞–±–ª–∏—Ü—ã
         if( tmp[nFirms-1][i].income>income)
         {
             income=tmp[nFirms-1][i].income;
             result[nFirms-1]=tmp[nFirms-1][i].index;
         }
-    // ÆØp•§•´Ô•¨ ™Æ´-¢Æ p†·Øp•§•´Ô•¨ÎÂ §•≠•£
+    // –æ–øp–µ–¥–µ–ª—è–µ–º –∫–æ–ª-–≤–æ p–∞—Å–øp–µ–¥–µ–ª—è–µ–º—ã—Ö –¥–µ–Ω–µ–≥
     t_float total=money[0];
     for( i=1; i<nRes; i++)
         if( money[i]>total ) total=money[i];
         
-    // † ‚•Ø•pÏ Æ·‚†´Ï≠Î• ‚†°´®ÊÎ · ™Æ≠Ê†
+    // –∞ —Ç–µ–ø–µp—å –æ—Å—Ç–∞–ª—å–Ω—ã–µ —Ç–∞–±–ª–∏—Ü—ã —Å –∫–æ–Ω—Ü–∞
     for( k=nFirms-2; (k>=0)&&(total>0); k-- )
     {
         total-=money[result[k+1]];
