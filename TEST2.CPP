@@ -16,8 +16,8 @@ class MyErrors: public _ParserErrorHandler
     public:
        MyErrors():_ParserErrorHandler(){}
        void out( char *s1, char *s2, char *s3)
-              { cout<<"\n Žè¨¡ª :"<<'\a'<<s1<<s2<<s3
-                    <<"\n ®¢â®p¨â¥ ¢¢®¤!";
+              { cout<<"\n ÐžÑˆÐ¸Ð±ÐºÐ°:"<<'\a'<<s1<<s2<<s3
+                    <<"\n ÐŸÐ¾Ð²Ñ‚Ð¾pÐ¸Ñ‚Ðµ Ð²Ð²Ð¾Ð´!";
               }
               
 };
