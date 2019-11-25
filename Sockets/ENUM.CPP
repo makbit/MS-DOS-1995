@@ -6,10 +6,13 @@
 void main(void)
 {
 	PROTOCOL_INFO protocols[8];
-    DWORD dwCount = sizeof(protocols);
-    if( EnumProtocols(0, protocols, &dwCount)==SOCKET_ERROR ) ShowLastError(0);
+	DWORD dwCount = sizeof(protocols);
+
+	if( EnumProtocols(0, protocols, &dwCount)==SOCKET_ERROR ) ShowLastError(0);
+
 	dwCount /= sizeof(PROTOCOL_INFO);
-    printf("Number of protocols:  %d", dwCount);
+	printf("Number of protocols:  %d", dwCount);
+
 	for(int i=0; i<dwCount; i++)
 	{
 		printf("\n-----------------------------------------------\n");
