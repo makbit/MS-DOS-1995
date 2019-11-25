@@ -13,9 +13,9 @@
 #define ERROR_INTERNAL_BETA          7
 
 /*----------        error messages                   ----------*/   
-#define MSG_NOSOLUTION       "«‡‰‡˜‡ ÌÂ ËÏÂÂÚ Â¯ÂÌËˇ"
-#define MSG_SIZE             "–‡ÁÏÂ Ú‡·ÎËˆ˚ ÒÎË¯ÍÓÏ ·ÓÎ¸¯ÓÈ"
-#define MSG_INPUT            "Œ¯Ë·Í‡ ‚‚Ó‰‡ Ô‡‚ÓÈ ˜‡ÒÚË ÌÂ‡‚ÂÌÒÚ‚‡"
+#define MSG_NOSOLUTION       "–ó–∞–¥–∞—á–∞ –Ω–µ –∏–º–µ–µ—Ç —Ä–µ—à–µ–Ω–∏—è"
+#define MSG_SIZE             "–†–∞–∑–º–µ—Ä —Ç–∞–±–ª–∏—Ü—ã —Å–ª–∏—à–∫–æ–º –±–æ–ª—å—à–æ–π"
+#define MSG_INPUT            "–û—à–∏–±–∫–∞ –≤–≤–æ–¥–∞ –ø—Ä–∞–≤–æ–π —á–∞—Å—Ç–∏ –Ω–µ—Ä–∞–≤–µ–Ω—Å—Ç–≤–∞"
 #define MSG_INTERNAL1        "Internal error #1"
 #define MSG_INTERNAL2        "Internal error #2" 
 #define MSG_INTERNAL3        "Internal error #3" 
@@ -64,17 +64,17 @@ int Simplex::Solve()
     {
         ++iteration;
         find_basis();
-        find_bkoef();          // è´ÆÂÆ ®È•‚  ???
+        find_bkoef();          // –ü–ª–æ—Ö–æ –∏—â–µ—Ç  ???
         calculate_prices();
 
-        if( find_min(prices,nTotalVars) >= 0 )   // á†§†Á† p•Ë•≠†!
+        if( find_min(prices,nTotalVars) >= 0 )   // –ó–∞–¥–∞—á–∞ p–µ—à–µ–Ω–∞!
           {
              goal=calculate_goal();
              return iteration;
           }
         field=find_field();
 
-        if( test_alfa( field )!=1  ) // á†§†Á† ≠• ®¨••‚ p•Ë•≠®Ô! 
+        if( test_alfa( field )!=1  ) // –ó–∞–¥–∞—á–∞ –Ω–µ –∏–º–µ–µ—Ç p–µ—à–µ–Ω–∏—è! 
             return 0;
     
         calculate_alfa( field );
@@ -96,7 +96,7 @@ void Simplex::find_basis()
         if( matr[j][i]==1 ) { find++;record=j; }
         else if( matr[j][i]!=0 ) { find=2;record=-1; }
       if( (find==1) && (record!=-1) ) matr[record][1]=i-2; 
-                                     // ^^^^^ °Æ´ÏË• ≠† 1 !!!
+                                     // ^^^^^ –±–æ–ª—å—à–µ –Ω–∞ 1 !!!
     }
   // NEXT VERSION:  xbasis[record]=i-2;
 }
@@ -159,7 +159,7 @@ float Simplex::find_min( float array[], int arr_size )
 //--------------------------------------------------------------------------
 int Simplex::test_alfa( int field )
 {
-  for( int j=0; j < nEqs; j++ ) // Ç ·‚Æ´°Ê• §.°. ÂÆ‚Ô °Î Æ§≠Æ Á®·´Æ > 0
+  for( int j=0; j < nEqs; j++ ) // –í —Å—Ç–æ–ª–±—Ü–µ –¥.–±. —Ö–æ—Ç—è –±—ã –æ–¥–Ω–æ —á–∏—Å–ª–æ > 0
      if( matr[j][field+3] > 0 ) return 1;
  return 0;
 }
@@ -175,15 +175,15 @@ void Simplex::calculate_alfa( int field )
 //--------------------------------------------------------------------------
  int Simplex::find_record()
 {
-       // ÑÆ´¶≠Æ ·yÈ. p•Ë•≠®• ‚.•. alfa[*]>0  !!!
+       // –î–æ–ª–∂–Ω–æ —Åy—â. p–µ—à–µ–Ω–∏–µ —Ç.–µ. alfa[*]>0  !!!
  int j, record=0;
  float   min_positive=alfa[0];
                  
-                 // àÈ•¨ ™†™Æ•-´®°Æ ß≠†Á. >=0
+                 // –ò—â–µ–º –∫–∞–∫–æ–µ-–ª–∏–±–æ –∑–Ω–∞—á. >=0
  for(j=0;j<nEqs;j++)
       if( alfa[j]>=0 ) { min_positive=alfa[j];record=j;}
 
- for(j=0;j<nEqs;j++)     // Ä ‚•Ø•p min ®ß ¢·•Â >=0
+ for(j=0;j<nEqs;j++)     // –ê —Ç–µ–ø–µp min –∏–∑ –≤—Å–µ—Ö >=0
      if( (alfa[j]>=0) && (alfa[j]<min_positive) )
         { 
            record=j;
@@ -251,16 +251,16 @@ void  Simplex::get(istream &is)
 {
  /* 
      C        X       B
- | äÆÌ‰. | Å†ß®·≠.| èp†¢†Ô | X1 | ... | Xn |
- | Å.è.¢ | è•p•¨. | Á†·‚Ï  |    |     |    |
- | Ê•´.‰ |        |        |    |     |    |
+ | –ö–æ—ç—Ñ. | –ë–∞–∑–∏—Å–Ω.| –üp–∞–≤–∞—è | X1 | ... | Xn |
+ | –ë.–ü.–≤ | –ü–µp–µ–º. | —á–∞—Å—Ç—å  |    |     |    |
+ | —Ü–µ–ª.—Ñ |        |        |    |     |    |
  |       |        |        | xx |     | xx |
  */   
  
  int i,j;
  for(j=0;j<nEqs;j++)
     {
-//     Ç¢Æ§ ™ÆÌ‰‰®Ê®•≠‚Æ¢ yp†¢≠•≠®Ô 
+//     –í–≤–æ–¥ –∫–æ—ç—Ñ—Ñ–∏—Ü–∏–µ–Ω—Ç–æ–≤ yp–∞–≤–Ω–µ–Ω–∏—è 
      for(i=3;i<nTotalVars+3;i++)
        {
          if(i<nVars+3)
@@ -271,7 +271,7 @@ void  Simplex::get(istream &is)
             else  matr[j][i]=0;
            }
         }
-//   Ç¢•§®‚• ß≠†Á•≠®• Øp†¢Æ© Á†·‚® ≠•p†¢•≠·‚¢† >=0 
+//   –í–≤–µ–¥–∏—Ç–µ –∑–Ω–∞—á–µ–Ω–∏–µ –øp–∞–≤–æ–π —á–∞—Å—Ç–∏ –Ω–µp–∞–≤–µ–Ω—Å—Ç–≤–∞ >=0 
      is>>matr[j][2];
      if( matr[j][2] < 0 ){ Error( MSG_INPUT, ERROR_INPUT); return; }
      }
